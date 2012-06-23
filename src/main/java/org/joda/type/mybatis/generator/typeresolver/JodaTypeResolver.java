@@ -58,12 +58,6 @@ public class JodaTypeResolver implements JavaTypeResolver
 
     protected Map<Integer, JdbcTypeInformation> typeMap;
 
-    // these are added manually until we move to JDK 6
-    // TODO - remove after JDK 6 and use the java.sql.Types constants instead
-    static final int NVARCHAR = -9;
-    static final int NCHAR = -15;
-    static final int NCLOB = 2011;
-
     public JodaTypeResolver()
     {
         super();
@@ -104,11 +98,11 @@ public class JodaTypeResolver implements JavaTypeResolver
                 new FullyQualifiedJavaType("byte[]"))); //$NON-NLS-1$
         typeMap.put(Types.LONGVARCHAR, new JdbcTypeInformation("LONGVARCHAR", //$NON-NLS-1$
                 new FullyQualifiedJavaType(String.class.getName())));
-        typeMap.put(NCHAR, new JdbcTypeInformation("NCHAR", //$NON-NLS-1$
+        typeMap.put(Types.NCHAR, new JdbcTypeInformation("NCHAR", //$NON-NLS-1$
                 new FullyQualifiedJavaType(String.class.getName())));
-        typeMap.put(NCLOB, new JdbcTypeInformation("NCLOB", //$NON-NLS-1$
+        typeMap.put(Types.NCLOB, new JdbcTypeInformation("NCLOB", //$NON-NLS-1$
                 new FullyQualifiedJavaType(String.class.getName())));
-        typeMap.put(NVARCHAR, new JdbcTypeInformation("NVARCHAR", //$NON-NLS-1$
+        typeMap.put(Types.NVARCHAR, new JdbcTypeInformation("NVARCHAR", //$NON-NLS-1$
                 new FullyQualifiedJavaType(String.class.getName())));
         typeMap.put(Types.NULL, new JdbcTypeInformation("NULL", //$NON-NLS-1$
                 new FullyQualifiedJavaType(Object.class.getName())));
