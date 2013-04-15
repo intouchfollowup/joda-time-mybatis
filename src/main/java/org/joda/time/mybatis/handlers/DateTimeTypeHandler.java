@@ -57,6 +57,22 @@ public class DateTimeTypeHandler implements TypeHandler
         }
     }
 
+	/* (non-Javadoc)
+	 * @see org.apache.ibatis.type.TypeHandler#getResult(java.sql.ResultSet, int)
+	 */
+	public Object getResult(ResultSet rs, int columnIndex) throws SQLException
+	{
+        Timestamp ts = rs.getTimestamp(columnIndex);
+        if (ts != null)
+        {
+            return new DateTime(ts.getTime(), DateTimeZone.UTC);
+        }
+        else
+        {
+            return null;
+        }
+	}
+
     /* (non-Javadoc)
      * @see org.apache.ibatis.type.TypeHandler#getResult(java.sql.CallableStatement, int)
      */

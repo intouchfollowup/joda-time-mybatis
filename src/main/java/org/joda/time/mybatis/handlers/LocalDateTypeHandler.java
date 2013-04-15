@@ -59,6 +59,22 @@ public class LocalDateTypeHandler implements TypeHandler
         }
     }
 
+	/* (non-Javadoc)
+	 * @see org.apache.ibatis.type.TypeHandler#getResult(java.sql.ResultSet, int)
+	 */
+	public Object getResult(ResultSet rs, int columnIndex) throws SQLException
+	{
+        Date date = rs.getDate(columnIndex);
+        if (date != null)
+        {
+            return new LocalDate(date.getTime(), DateTimeZone.UTC);
+        }
+        else
+        {
+            return null;
+        }
+	}
+
     /* (non-Javadoc)
      * @see org.apache.ibatis.type.TypeHandler#getResult(java.sql.CallableStatement, int)
      */
